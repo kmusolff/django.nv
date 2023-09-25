@@ -15,6 +15,20 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - run: echo "This is a test step"
+  artifact:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build Project
+        run: |
+          # Your build steps here
+          # For example, compile code, generate reports, etc.
+          mkdir -p my_artifact_folder
+          echo "This is an example artifact" > my_artifact_folder/example.txt
+      - name: Store Artifact
+        uses: actions/upload-artifact@v3
+        with:
+            name: my-artifact  # Set the name for the artifact
+            path: my_artifact_folder  # Path to the artifact folder or file
 
   integration:
     runs-on: ubuntu-20.04
